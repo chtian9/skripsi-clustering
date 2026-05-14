@@ -18,11 +18,11 @@ st.set_page_config(
 # =========================================
 
 df = pd.read_csv(
-    'C:/SKripsi/Skripsi Clustering/output/customer_segmentation_complete.csv'
+    'output/customer_segmentation_complete.csv'
 )
 
 evaluation_df = pd.read_csv(
-    'C:/SKripsi/Skripsi Clustering/output/evaluation_result.csv'
+    'output/evaluation_result.csv'
 )
 
 # =========================================
