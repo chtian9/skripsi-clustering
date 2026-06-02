@@ -134,7 +134,7 @@ DATAFRAME
 # =========================================================
 
 df = pd.read_csv(
-    r'customer_segmentation_dpp.csv'
+    "streamllit_app/customer_segmentation_dpp.csv"
 )
 
 # =========================================================
