@@ -1,0 +1,4 @@
+Algoritma,Silhouette Score,Davies-Bouldin Index,Calinski-Harabasz Index
+K-Means,0.55,0.77,241.7
+DBSCAN,0.72,1.21,
+Agglomerative,0.58,0.73,256.0

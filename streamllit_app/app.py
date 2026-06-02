@@ -134,7 +134,7 @@ DATAFRAME
 # =========================================================
 
 df = pd.read_csv(
-    r'C:\SKripsi\Skripsi Clustering\output\customer_segmentation_dpp.csv'
+    r'customer_segmentation_dpp.csv'
 )
 
 # =========================================================
