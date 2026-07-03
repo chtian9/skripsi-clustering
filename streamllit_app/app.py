@@ -356,43 +356,58 @@ evaluation_df = pd.DataFrame({
 
     "Algorithm": [
 
-        "KMeans",
+        "K-Means",
         "Agglomerative",
-        "GMM",
-        "DBSCAN"
+        "DBSCAN",
+        "Gaussian Mixture Model"
+
     ],
 
     "Silhouette Score": [
 
-        0.464,
+        0.457,
         0.427,
-        0.131,
-        None
+        0.285,
+        0.088
+
     ],
 
-    "Davies Bouldin Index": [
+    "Davies-Bouldin Index": [
 
-        0.757,
+        0.631,
         0.638,
-        1.765,
-        None
+        0.918,
+        2.284
+
     ],
 
-    "Calinski Harabasz Index": [
+    "Calinski-Harabasz Index": [
 
-        336.337,
+        349.177,
         300.680,
-        112.775,
-        None
+        70.234,
+        80.274
+
     ],
 
-    "Status": [
+    "Average Rank": [
 
-        "Good",
-        "Best Overall",
-        "Overlap High",
-        "Failed Density Separation"
+        1.000,
+        2.000,
+        3.333,
+        3.667
+
+    ],
+
+    "Keputusan": [
+
+        "🏆 Model Terbaik",
+        "Alternatif Kompetitif",
+        "Segmentasi Berbasis Density",
+        "Performa Terendah"
+
     ]
+
 })
 
 st.dataframe(
@@ -644,44 +659,71 @@ st.markdown("""
 
 if algorithm == "KMeans":
 
-    st.info("""
+    st.success("""
 
-    K-Means menghasilkan clustering yang cukup stabil
-    dengan pemisahan cluster yang baik.
+### 🏆 Model Terbaik
 
-    Cocok digunakan untuk segmentasi customer umum.
+Algoritma **K-Means** memperoleh performa terbaik
+berdasarkan ketiga metrik evaluasi, yaitu
+Silhouette Score, Davies-Bouldin Index,
+dan Calinski-Harabasz Index.
 
-    """)
+Hasil clustering menunjukkan pemisahan cluster
+yang baik serta tingkat kekompakan cluster yang tinggi,
+sehingga K-Means dipilih sebagai algoritma terbaik
+untuk segmentasi customer pada penelitian ini.
+
+""")
 
 elif algorithm == "Agglomerative":
 
-    st.success("""
+    st.info("""
 
-    Agglomerative Clustering memberikan struktur
-    cluster terbaik secara keseluruhan berdasarkan
-    DBI dan interpretasi hierarchical customer.
+### 📈 Alternatif Kompetitif
 
-    """)
+Algoritma **Agglomerative Clustering**
+menghasilkan performa evaluasi yang mendekati
+K-Means.
 
-elif algorithm == "GMM":
+Pendekatan hierarchical mampu membentuk struktur
+cluster yang cukup baik sehingga dapat dijadikan
+alternatif dalam proses segmentasi customer,
+meskipun performanya masih sedikit di bawah K-Means.
 
-    st.warning("""
-
-    GMM menghasilkan overlap cluster yang cukup tinggi,
-    menunjukkan distribusi customer tidak mengikuti
-    Gaussian distribution secara optimal.
-
-    """)
+""")
 
 elif algorithm == "DBSCAN":
 
+    st.warning("""
+
+### 📍 Segmentasi Berbasis Density
+
+DBSCAN berhasil membentuk cluster berdasarkan
+kepadatan data tanpa perlu menentukan jumlah cluster
+di awal proses.
+
+Namun berdasarkan hasil evaluasi, kualitas pemisahan
+cluster masih berada di bawah K-Means dan
+Agglomerative Clustering pada dataset invoice
+yang digunakan dalam penelitian ini.
+
+""")
+
+elif algorithm == "GMM":
+
     st.error("""
 
-    DBSCAN gagal membentuk multiple cluster yang meaningful
-    karena dataset customer invoice tidak memiliki
-    density separation yang kuat.
+### 📉 Performa Terendah
 
-    """)
+Gaussian Mixture Model memperoleh nilai evaluasi
+terendah dibandingkan algoritma clustering lainnya.
+
+Hal ini menunjukkan bahwa distribusi data transaksi
+customer pada penelitian ini kurang sesuai dengan
+asumsi distribusi Gaussian sehingga menghasilkan
+overlap antar cluster yang lebih tinggi.
+
+""")
 
 # =========================================================
 # FOOTER
